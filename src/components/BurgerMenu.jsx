@@ -5,14 +5,12 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   Drawer,
   makeStyles,
   Modal,
   Backdrop,
   Fade,
-  Typography,
 } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
 import ModalStat from "./ModalStats";
@@ -80,9 +78,6 @@ const BurgerMenu = () => {
       <List>
         {characters.map((char) => (
           <ListItem button key={char} onClick={() => handleModalOpen(char)}>
-            <ListItemIcon>
-              <MenuIcon />
-            </ListItemIcon>
             <ListItemText primary={char} />
           </ListItem>
         ))}
@@ -101,7 +96,7 @@ const BurgerMenu = () => {
       >
         <MenuIcon />
       </IconButton>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>
         {list()}
       </Drawer>
       <Modal
@@ -116,8 +111,7 @@ const BurgerMenu = () => {
       >
         <Fade in={modalOpen}>
           <div className={classes.paper}>
-            <Typography variant="h5">{selectedChar}</Typography>
-            <ModalStat char={selectedChar} />
+            <ModalStat open={modalOpen} char={selectedChar} />
           </div>
         </Fade>
       </Modal>

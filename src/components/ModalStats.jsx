@@ -1,64 +1,36 @@
 import React, { useState, useEffect } from "react";
 import {
-  Modal,
-  Backdrop,
-  Fade,
-  makeStyles,
-  Typography,
+    Table,
+    TableBody, 
+    TableCell, 
+    TableContainer, 
+    TableRow, 
+    Paper
 } from "@material-ui/core";
 import { db } from '../firebase';
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
-
-const ModalStat = ({ open, handleClose, characterId }) => {
-  const classes = useStyles();
-  const [characterName, setCharacterName] = useState("");
+const ModalStat = ({ open, char }) => {
+  const [characterPv, setcharacterPv] = useState("");
 
   useEffect(() => {
-    if (open && characterId) {
-      db.collection("personnage")
-        .where("name", "==", characterId)
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            setCharacterName(doc.data());
-          });
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
-        });
-    }
-  }, [open, characterId]);
+    const fetchData = async () => {
+      const data = await db.collection("personnage").where("name", "==", char).get();
+      setcharacterPv(data.docs.map((doc) => doc.data().pv));
+    };
+    fetchData();
+  }, [char]);
   
-
   return (
-    <Modal
-      className={classes.modal}
-      open={open}
-      onClose={handleClose}
-      closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500,
-      }}
-    >
-      <Fade in={open}>
-        <div className={classes.paper}>
-          <Typography variant="h4">{characterName}</Typography>
-        </div>
-      </Fade>
-    </Modal>
+    <TableContainer component={Paper}>
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell>PV</TableCell>
+            <TableCell>{characterPv}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
