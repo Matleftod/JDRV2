@@ -27,9 +27,6 @@ function Home() {
 
   return (
     <Container maxWidth="sm" className={classes.root}>
-      <Typography variant="h4" component="h1" className={classes.header}>
-        Health Bars
-      </Typography>
       {characters.map((character) => (
         <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth= {character.max_pv}/>
       ))}

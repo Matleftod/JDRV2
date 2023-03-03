@@ -94,6 +94,8 @@ const ModalStats = ({ open, char }) => {
         <TableBody>
           <TableRow>
             <TableCell>PV</TableCell>
+            <TableCell>
+
             {isEditing ? (
               <>
                 <TableCell>
@@ -110,6 +112,24 @@ const ModalStats = ({ open, char }) => {
                 <TableCell>{characterStats.pv}</TableCell>
               </>
             )}
+            <TableCell>/</TableCell>
+            {isEditing ? (
+              <>
+                <TableCell>
+                  <TextField
+                    type="number"
+                    name="max pv"
+                    value={newStats.max_pv}
+                    onChange={handleInputChange}
+                  />
+                </TableCell>
+              </>
+            ) : (
+              <>
+                <TableCell>{characterStats.max_pv}</TableCell>
+              </>
+            )}
+            </TableCell>
           </TableRow>
 {/******************************************/}
           <TableRow>
