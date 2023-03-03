@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "jdrv2",
     "public": "build",
     "ignore": [
       "firebase.json",
