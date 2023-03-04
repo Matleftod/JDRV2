@@ -18,17 +18,20 @@ function Home() {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await db.collection("personnage").get();
-      setCharacters(data.docs.map((doc) => doc.data()));
-    };
-    fetchData();
+    // Attach a realtime listener to monitor changes to the "personnage" collection
+    const unsubscribe = db.collection("personnage")
+      .onSnapshot((querySnapshot) => {
+        const updatedCharacters = querySnapshot.docs.map((doc) => doc.data());
+        setCharacters(updatedCharacters);
+      });
+    // Detach the listener when the component unmounts
+    return () => unsubscribe();
   }, []);
 
   return (
     <Container maxWidth="sm" className={classes.root}>
       {characters.map((character) => (
-        <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth= {character.max_pv}/>
+        <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth={character.max_pv} />
       ))}
     </Container>
   );
