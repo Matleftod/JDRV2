@@ -31,7 +31,7 @@ function Home() {
   return (
     <Container maxWidth="sm" className={classes.root}>
       {characters.map((character) => (
-        <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth={character.max_pv} />
+        <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth={character.max_pv} gold={character.gold}/>
       ))}
     </Container>
   );

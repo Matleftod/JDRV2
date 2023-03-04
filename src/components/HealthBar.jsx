@@ -1,12 +1,16 @@
 import React from "react";
 import LinearProgress from "@mui/material/LinearProgress";
+import Gold from "./Gold";
 
-const HealthBar = ({ name, currentHealth, maxHealth }) => {
+const HealthBar = ({ name, currentHealth, maxHealth, gold }) => {
   const healthPercentage = (currentHealth / maxHealth) * 100;
 
   return (
     <div>
-      <div>{name}</div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div>{name}</div>
+        <Gold gold={gold} name={name} />
+      </div>
       <LinearProgress
         variant="determinate"
         value={healthPercentage}
@@ -14,7 +18,7 @@ const HealthBar = ({ name, currentHealth, maxHealth }) => {
           healthPercentage > 50 ? "success" : healthPercentage > 20 ? "warning" : "error"
         }
       />
-      <div>{currentHealth}/{maxHealth}</div>
+      <div style={{ marginBottom: "25px" }}>PV : {currentHealth}/{maxHealth}</div>
     </div>
   );
 };
