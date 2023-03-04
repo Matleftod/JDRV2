@@ -118,7 +118,7 @@ const ModalStats = ({ open, char }) => {
                 <TableCell>
                   <TextField
                     type="number"
-                    name="max pv"
+                    name="max_pv"
                     value={newStats.max_pv}
                     onChange={handleInputChange}
                   />
