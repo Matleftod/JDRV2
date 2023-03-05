@@ -3,7 +3,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableContainer,
   TableRow,
   Paper,
@@ -16,7 +15,6 @@ import { Edit, Save } from "@material-ui/icons";
 import { db } from "../firebase";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 
 const ModalStats = ({ open, char }) => {
   const [characterStats, setCharacterStats] = useState({});
