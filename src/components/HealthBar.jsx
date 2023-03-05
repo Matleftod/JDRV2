@@ -1,14 +1,15 @@
 import React from "react";
 import LinearProgress from "@mui/material/LinearProgress";
 import Gold from "./Gold";
+import Prime from "./Prime";
 
-const HealthBar = ({ name, currentHealth, maxHealth, gold }) => {
+const HealthBar = ({ name, currentHealth, maxHealth, gold, prime }) => {
   const healthPercentage = (currentHealth / maxHealth) * 100;
 
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div>{name}</div>
+        <div><Prime name={name} prime={prime} /></div>
         <Gold gold={gold} name={name} />
       </div>
       <LinearProgress
