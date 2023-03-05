@@ -16,6 +16,7 @@ import { Edit, Save } from "@material-ui/icons";
 import { db } from "../firebase";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 
 const ModalStats = ({ open, char }) => {
   const [characterStats, setCharacterStats] = useState({});
@@ -127,6 +128,28 @@ const ModalStats = ({ open, char }) => {
             ) : (
               <>
                 <TableCell>{characterStats.max_pv}</TableCell>
+              </>
+            )}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Prime</TableCell>
+            <TableCell>
+
+            {isEditing ? (
+              <>
+                <TableCell>
+                  <TextField
+                    type="number"
+                    name="prime"
+                    value={newStats.prime}
+                    onChange={handleInputChange}
+                  />
+                </TableCell>
+              </>
+            ) : (
+              <>
+                <TableCell>{characterStats.prime}</TableCell>
               </>
             )}
             </TableCell>
