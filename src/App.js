@@ -1,5 +1,6 @@
 import BurgerMenu from './components/BurgerMenu';
 import Health from './components/Health';
+import ListeDice from './components/ListeDice';
 import './App.css';
 import './Health.css';
 
@@ -20,6 +21,7 @@ function App() {
             <CssBaseline />
               <BurgerMenu />
               <Health />
+              <ListeDice />
           </ThemeProvider>
         </header>
       </div>

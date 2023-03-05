@@ -3,7 +3,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
   TableContainer,
   TableRow,
   Paper,
@@ -127,6 +126,28 @@ const ModalStats = ({ open, char }) => {
             ) : (
               <>
                 <TableCell>{characterStats.max_pv}</TableCell>
+              </>
+            )}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Prime</TableCell>
+            <TableCell>
+
+            {isEditing ? (
+              <>
+                <TableCell>
+                  <TextField
+                    type="number"
+                    name="prime"
+                    value={newStats.prime}
+                    onChange={handleInputChange}
+                  />
+                </TableCell>
+              </>
+            ) : (
+              <>
+                <TableCell>{characterStats.prime}</TableCell>
               </>
             )}
             </TableCell>

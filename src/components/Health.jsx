@@ -66,7 +66,7 @@ function Health() {
       {showHealthBars && (
         <div className={classes.healthContainer}>
           {characters.map((character) => (
-            <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth={character.max_pv} gold={character.gold}/>
+            <HealthBar key={character.id} name={character.name} currentHealth={character.pv} maxHealth={character.max_pv} gold={character.gold} prime={character.prime}/>
           ))}
         </div>
       )}
