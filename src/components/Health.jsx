@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   healthContainer:{
-    background: 'rgba(0, 0, 0, 0.5)',
+    background: 'rgba(0, 0, 0, 0.6)',
     borderRadius: '10px',
     padding: '20px',
   },
@@ -36,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function Health() {
   const classes = useStyles();
   const [characters, setCharacters] = useState([]);
-  const [showHealthBars, setShowHealthBars] = useState(true);
+  const [showHealthBars, setShowHealthBars] = useState(false);
 
   useEffect(() => {
     // Attach a realtime listener to monitor changes to the "personnage" collection
@@ -74,4 +74,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Health;
