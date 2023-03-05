@@ -18,6 +18,8 @@ import ModalStat from "./ModalStats";
 const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
+    background: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
   },
   list: {
     width: 250,

@@ -1,7 +1,7 @@
 import BurgerMenu from './components/BurgerMenu';
-import Home from './components/Home';
+import Health from './components/Health';
 import './App.css';
-import './Home.css';
+import './Health.css';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,11 +15,11 @@ function App() {
   return (
     
       <div className="App">
-        <header className="App-header">
+        <header className="App-header imgBg">
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            <BurgerMenu />
-            <Home />
+              <BurgerMenu />
+              <Health />
           </ThemeProvider>
         </header>
       </div>
