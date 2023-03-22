@@ -70,6 +70,10 @@ function Perso() {
     setSelectedChar(null);
   };
 
+  const handleCloseButtonClick = () => {
+    setShowCharacters(false);
+  };
+
   return (
     <Container maxWidth="sm" className={classes.root}>
       <div className={classes.buttonContainer}>
@@ -90,7 +94,7 @@ function Perso() {
           ))}
         </List>
       )}
-      {selectedChar && <PersoStats char={selectedChar} onBackButtonClick={handleBackButtonClick} />}
+      {selectedChar && <PersoStats char={selectedChar} onBackButtonClick={handleBackButtonClick} onCloseButtonClick={handleCloseButtonClick} />}
     </Container>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Typography, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import CloseIcon from '@material-ui/icons/Close';
 import { db } from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,8 +11,14 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContainer: {
     display: 'flex',
+    justifyContent: 'space-between',
   },
   backButton: {
+    marginBottom: theme.spacing(2),
+    color: 'white',
+    background: 'rgba(0, 0, 0, 0.85)',
+  },
+  closeButton: {
     marginBottom: theme.spacing(2),
     color: 'white',
     background: 'rgba(0, 0, 0, 0.85)',
@@ -23,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PersoStats({ char, onBackButtonClick }) {
+function PersoStats({ char, onBackButtonClick, onCloseButtonClick }) {
     const classes = useStyles();
     const [characterStats, setCharacterStats] = useState(null);
   
@@ -41,16 +48,28 @@ function PersoStats({ char, onBackButtonClick }) {
     }, [char]);
   
     const handleBackButtonClick = () => {
-      if (onBackButtonClick) {
-        onBackButtonClick();
-      }
+        if (onBackButtonClick) {
+            onBackButtonClick();
+        }
     };
+
+    const handleCloseButtonClick = () => {
+        if (onBackButtonClick) {
+            onBackButtonClick();
+        }
+        if (onCloseButtonClick) {
+            onCloseButtonClick();
+        }
+      };
 
 return (
     <Container maxWidth="sm" className={classes.root}>
         <div className={classes.buttonContainer}>
             <IconButton className={classes.backButton} onClick={handleBackButtonClick}>
                 <ArrowBackIcon />
+            </IconButton>
+            <IconButton className={classes.closeButton} onClick={handleCloseButtonClick}>
+                <CloseIcon />
             </IconButton>
         </div>
         {characterStats && (
