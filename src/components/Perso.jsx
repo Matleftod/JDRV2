@@ -3,6 +3,7 @@ import { Container, IconButton, List, ListItem, ListItemText } from '@material-u
 import { makeStyles } from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
 import { db } from '../firebase';
+import PersoStats from './PersoStats';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +47,7 @@ function Perso() {
   const classes = useStyles();
   const [characters, setCharacters] = useState([]);
   const [showCharacters, setShowCharacters] = useState(false);
+  const [selectedChar, setSelectedChar] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,6 +62,14 @@ function Perso() {
     setShowCharacters(!showCharacters);
   };
 
+  const handleCharacterSelect = (character) => {
+    setSelectedChar(character.name);
+  };
+
+  const handleBackButtonClick = () => {
+    setSelectedChar(null);
+  };
+
   return (
     <Container maxWidth="sm" className={classes.root}>
       <div className={classes.buttonContainer}>
@@ -67,15 +77,20 @@ function Perso() {
           <PersonIcon className={classes.personIcon} />
         </IconButton>
       </div>
-      {showCharacters && (
+      {!selectedChar && showCharacters && (
         <List className={classes.personList}>
           {characters.map((character, index) => (
-            <ListItem className={classes.personItem} key={index}>
+            <ListItem
+              className={classes.personItem}
+              key={index}
+              onClick={() => handleCharacterSelect(character)}
+            >
               <ListItemText primary={character.name} />
             </ListItem>
           ))}
         </List>
       )}
+      {selectedChar && <PersoStats char={selectedChar} onBackButtonClick={handleBackButtonClick} />}
     </Container>
   );
 }
