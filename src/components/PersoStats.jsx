@@ -33,6 +33,15 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     margin: theme.spacing(1),
     borderRadius: '10px',
+    width: 'fit-content',
+    height: 'fit-content',
+  },
+  gridContainer: {
+    position: 'relative',
+  },
+  overlap: {
+    position: 'absolute',
+    top: (props) => theme.spacing(props.top || 0),
   },
   name: {
     marginBottom: '20px', 
@@ -116,8 +125,8 @@ return (
             <Typography variant="h6" className={classes.name}>
                 {characterStats.name}
             </Typography>
-            <Grid container spacing={4}>
-                <Grid item xs={12} sm={6}>
+            <Grid container spacing={4} className={classes.gridContainer}>
+                <Grid item>
                     <Box className={`${classes.gridItem} ${classes.statsAtk}`}>
                         <Typography className={classes.category}>Catégorie Combat : </Typography>
                         <Typography>Arme Légère : {characterStats.arm_legere}</Typography>
@@ -127,22 +136,28 @@ return (
                         <Typography>Style Spécial : {characterStats.style_spe}</Typography>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Box className={`${classes.gridItem} ${classes.statsCerv}`}>
+                <Grid item>
+                    <Box
+                        className={`${classes.gridItem} ${classes.statsCerv} ${classes.overlap}`}
+                        style={{ top: "13px" }}
+                    >
                         <Typography className={classes.category}>Catégorie Cerveau : </Typography>
                         <Typography>Connaissance : {characterStats.connaissance}</Typography>
                         <Typography>Intelligence : {characterStats.intel}</Typography>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item>
                     <Box className={`${classes.gridItem} ${classes.statsDext}`}>
                         <Typography className={classes.category}>Catégorie Dextérité : </Typography>
                         <Typography>Agilité / Discrérité : {characterStats.agi}</Typography>
                         <Typography>Perception : {characterStats.perception}</Typography>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Box className={`${classes.gridItem} ${classes.statsMental}`}>
+                <Grid item>
+                    <Box
+                        className={`${classes.gridItem} ${classes.statsMental} ${classes.overlap}`}
+                        style={{ top: "165px" }}
+                    >
                         <Typography className={classes.category}>Catégorie Mental : </Typography>
                         <Typography>Intimidation : {characterStats.intimidation}</Typography>
                         <Typography>Mensonge : {characterStats.mensonge}</Typography>
@@ -151,7 +166,7 @@ return (
                         <Typography>Volonté : {characterStats.volonte}</Typography>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item>
                     <Box className={`${classes.gridItem} ${classes.statsHaki}`}>
                         <Typography className={classes.category}>Catégorie Haki : </Typography>
                         <Typography>Haki de l'Armement : {characterStats.haki_arm}</Typography>
